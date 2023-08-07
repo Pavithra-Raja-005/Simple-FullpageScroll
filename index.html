@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fullpage</title>
+	<style type="text/css">
+		/*========fullpage=========*/
+		body {
+		    margin: 0;
+		}
+		div#fullpage section {
+		    height: 100vh;
+		}
+
+		div#fullpage section#section1 {
+		    background: yellow;
+		}
+
+		div#fullpage section#section2 {
+		    background: red;
+		}
+
+		div#fullpage section#section3 {
+		    background: green;
+		}
+
+		div#fullpage section#section4 {
+		    background: pink;
+		}
+
+		.clickable_points {
+		    position: fixed;
+		    top: 21em;
+		    right: 12px;
+		}
+
+		div#fullpage {
+		    position: relative;
+		}
+
+		.clickable_points ul li {
+			list-style: none;
+		    background: #fff;
+		    height: 10px;
+		    width: 10px;
+		    margin-bottom: 14px;
+		    border-radius: 50%;
+		    box-shadow: 0px 0px 5px 0px #8e8e8e;
+		    position: relative;
+		}
+
+		.clickable_points ul li::before {
+		    height: 5px;
+		    width: 5px;
+		    background: #989898;
+		    position: absolute;
+		    content: "";
+		    left: 50%;
+		    top: 50%;
+		    transform: translate(-50%,-50%);
+		    border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+
+<div id="fullpage">
+<div class="clickable_points ">
+	<ul>
+		<a href="#section1"><li></li></a>
+		<a href="#section2"><li></li></a>
+		<a href="#section3"><li></li></a>
+		<a href="#section4"><li></li></a>
+		
+	</ul>
+</div>
+<section id="section1" class="sectionscroll">1</section>
+<section id="section2" class="sectionscroll">2</section>
+<section id="section3" class="sectionscroll">3</section>
+<section id="section4" class="sectionscroll">4</section>
+</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	  // Add smooth scrolling to all links
+	  $(".clickable_points a").on('click', function(event) {
+
+	    // Make sure this.hash has a value before overriding default behavior
+	    if (this.hash !== "") {
+	      // Prevent default anchor click behavior
+	      event.preventDefault();
+
+	      // Store hash
+	      var hash = this.hash;
+
+	      // Using jQuery's animate() method to add smooth page scroll
+	      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+	      $('html, body').animate({
+	        scrollTop: $(hash).offset().top
+	      }, 800, function(){
+	   
+	        // Add hash (#) to URL when done scrolling (default click behavior)
+	        window.location.hash = hash;
+	      });
+	    } // End if
+	  });
+	});
+</script>
+</html>
